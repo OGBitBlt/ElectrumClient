@@ -62,16 +62,20 @@ $addressManager = new AddressManager($client);
 $address = $addressManager->GetNewPaymentAddress();
 ```
 #### Address Functions
-##### GetNewPaymentAddress
-Creates a new bitcoin payment address
-##### GetAddressBalance
-Get the balance of the bitcoin address
-##### IsValidAddress
-Determines if the address is valid or not
-##### IsMyAddress
-Determines if the address is associated with your wallet or not
-##### GetAddressHistory
-Returns a history of transactions for the adddress
+- ##### GetNewPaymentAddress
+    - Creates a new bitcoin payment address
+```
+// ...create client and initialize
+$address = $client->getManager(AddressManager::class)->GetNewPaymentAddress();
+```
+- ##### GetAddressBalance
+    - Get the balance of the bitcoin address
+- ##### IsValidAddress
+    - Determines if the address is valid or not
+- ##### IsMyAddress
+    - Determines if the address is associated with your wallet or not
+- ##### GetAddressHistory
+    - Returns a history of transactions for the adddress
 
 #### Wallet Functions
 
