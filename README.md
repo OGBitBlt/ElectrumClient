@@ -37,6 +37,7 @@ There are 2 ways to make calls to the electrum interface. It is always recommend
 client object for all of your calls, but in some instances you may want to create your own object managers. Below are examples of both using the Address manager to get a new receive address.
 
 ##### Example using the client object (recommended method):
+```
 $client = new ElectrumClient('user','pass','localhost',7777,false);
 try {
     $client->Init();
@@ -46,8 +47,9 @@ try {
 }
 // get a new payment address using the client object manager
 $address = $client->getManager(AddressManager::class)->GetNewPaymentAddress();
-
+````
 ##### Example by creating the object manager (alternative method):
+```
 $client = new ElectrumClient('user','pass','localhost',7777,false);
 try {
     $client->Init();
@@ -58,7 +60,7 @@ try {
 // create an address manager 
 $addressManager = new AddressManager($client);
 $address = $addressManager->GetNewPaymentAddress();
-
+```
 #### Address Functions
 
 #### Wallet Functions
