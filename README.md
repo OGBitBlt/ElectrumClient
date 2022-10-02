@@ -70,6 +70,13 @@ $address = $client->getManager(AddressManager::class)->GetNewPaymentAddress();
 ```
 - ##### GetAddressBalance
     - Get the balance of the bitcoin address
+```
+// ... create client and initialize
+// ... get address
+// pass true as the second argument if you only want confirmed transactions
+// pass false if you want confirmed and unconfirmed transactions included in the balance
+$balance = $client->getManager(AddressManager::class)->GetAddressBalance($address, false);
+```
 - ##### IsValidAddress
     - Determines if the address is valid or not
 - ##### IsMyAddress
