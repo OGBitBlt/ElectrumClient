@@ -21,6 +21,7 @@ Electrum must be configured so that it will run as a daemon and accept JSONRPC c
 - At this point your electrum wallet is ready to receive RPC commands.
 Here is a linux script to automate the process, note you have to replace the values specified in between < >
 
+```
 #!/bin/sh
 electrum daemon -d --testnet
 electrum setconfig rpcuser <username> --testnet
@@ -28,5 +29,6 @@ electrum setconfig rpcpassword <password> --testnet
 electrum setconfig rpcport 7777 --testnet
 electrum stop --testnet
 electrum daemon -d -testnet
+```
 
 
