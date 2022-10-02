@@ -29,7 +29,8 @@ electrum setconfig rpcuser <username> --testnet
 electrum setconfig rpcpassword <password> --testnet
 electrum setconfig rpcport 7777 --testnet
 electrum stop --testnet
-electrum daemon -d -testnet
+electrum daemon -d --testnet
+electrum load_wallet --testnet
 ```
 
 
