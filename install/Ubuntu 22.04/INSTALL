@@ -1,0 +1,5 @@
+Modify the parameters in the file env.sh before running anything.
+
+If you do not have an electrum wallet installed run the script setup_with_electrum.sh if you already have an electrum wallet installed then run setup.sh
+
+This will create a service that starts electrum every time your system boots.
