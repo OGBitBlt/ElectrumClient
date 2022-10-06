@@ -71,12 +71,16 @@ $addressManager = $client->getManager(AddressManager::class);
 ```
 - ##### AddressManager->GetNewPaymentAddress() : string 
     - Creates a new bitcoin payment address
+    - return string containing the new receive address
 ```
 // ...create client and initialize
 $address = $client->getManager(AddressManager::class)->GetNewPaymentAddress();
 ```
 - ##### AdressManager->GetAddressBalance(string $address, bool $confirmed) : float
     - Get the balance of the bitcoin address
+    - param: $address string value of the bitcoin address
+    - param: $confirmed bool value, true if you only want to see confirmed transactions in the balance and false otherwise
+    - return: a float value of the balance for the address
 ```
 // ... create client and initialize
 // ... get address
@@ -86,9 +90,15 @@ $balance = $client->getManager(AddressManager::class)->GetAddressBalance($addres
 ```
 - ##### AddressManager->IsValidAddress(string $address) : bool
     - Determines if the address is valid or not
+    - param: $address a string containing the address to check
+    - return: true if is a valid address, false otherwise
 - ##### AddressManager->IsMyAddress(string $addres) : bool
     - Determines if the address is associated with your wallet or not
+    - param: $address a string holding the bitcoin address to check
+    - return: true if the address belongs to your wallet, false otherwise.
 - ##### AddressManager->GetAddressHistory(string $address) : array
+    - Get the transaction history for an address
+    - param: $address a string holding the address you want to get the history for
     - Returns a history of transactions for the adddress in an associative array that looks like:
 ```
 array(3) {
@@ -122,6 +132,8 @@ Wallet functions are available via the WalletManager object:
 $walletManager = $client->getManager(WalletManager::class);
 ```
 - ##### WalletManger->GetWalletBalance(bool $confirmed = false) : float
+    - param: $confirmed (optional) defaults to false; set to true if you only want to include confirmed transactions in the wallet balance.
+    - return: float balance of the wallet.
 
 ### Transaction Functions
 Transaction functions are available via the TransactionManager object:
