@@ -140,9 +140,22 @@ Transaction functions are available via the TransactionManager object:
 ```
 $transactionManager = $client->getManager(TransactionManager::class);
 ```
+- ##### TransactionManager->BroadCastTransaction(string $transactionid) : string 
+    - Broadcasts the transaction to the network
+    - param: $transaction string containing the transaction id
+    - return: string transaction hash
 - ##### TransactionManager->IsFeeAmountValid(float $fee_level) : bool
+    - Determins if the fee level is valid 
+    - param: $fee_level float 0.0 to 1.0
+    - returns: true if the fee level is valid and false otherwise
 - ##### TransactionManager->GetRecommendedTransactionFee(float $level = 0.5) : float
+    - Returns the recommended transaction fee based on the fee level
+    - param: $level (optional) float value containing the fee level, defaults to 0.5
+    - return: a float amount containing the recommended fee amount
 - ##### TransactionManager->GetTransactionConfirmations(string $transaction) : int
+    - Gets the number of confirmations the transaction has on the network
+    - param: $transaction string containing the transaction id
+    - returns: an integer value of the number of confirmations the transaction has on the network
 ### Payment Functions
 Payment functions are available via the PaymentManager object:
 ```
