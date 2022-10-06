@@ -149,11 +149,33 @@ Payment functions are available via the PaymentManager object:
 $paymentManager = $client->getManager(PaymentManager::class);
 ```
 - ##### PaymentManager->PayTo(string $address, float $amount, float $fee) : string
+    - Pays a specified amount to the specified address
+    - param: $address string value holding the bitcoin address to pay
+    - param: $amount float amount to be paid
+    - param: $fee float amount of the transaction fee to pay
+    - return: a string containing the transaction id
 - ##### PaymentManager->PayMax(string $address, float $fee) : string
+    - Pays the total wallet balance amount to the specified address
+    - param: $address string value holding the bitcoin address to pay
+    - param: $fee float amount of the transaction fee to pay
+    - return: a string containing the transaction id
 ### Version Functions
 Version functions are available via the VersionManager object:
 ```
 $versionManager = $client->getManager(VersionManager::class);
 ```
 - ##### VersionManager->GetElectrumVersion() : string
+    - Provides version info for the Electrum wallet
+    - return: a string containing the version info formatted as nn.nn.nn (major.minor.revision)
 - ##### VersionManager->GetVersionInfo(string $versionInfo) : int
+    - Returns specific version info (major, minor, revision)
+    - param: VersionManager has 3 constants that can be used to retrieve version info
+        - VersionManager::MAJOR_VERSION
+        - VersionManager::MINOR_VERSION
+        - VersionManager::REVISION
+    - return: an integer value of the version info requested
+```
+$major = $versionManager->GetVersionInfo(VersionManager::MAJOR_VERSION);
+$minor = $versionManager->GetVersionInfo(VersionManager::MINOR_VERSION);
+$revision = $versionManager->GetVersionInfo(VersionManager::REVISION);
+```
