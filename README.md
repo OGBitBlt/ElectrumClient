@@ -62,13 +62,13 @@ $addressManager = new AddressManager($client);
 $address = $addressManager->GetNewPaymentAddress();
 ```
 #### Address Functions
-- ##### GetNewPaymentAddress
+- ##### GetNewPaymentAddress() : string 
     - Creates a new bitcoin payment address
 ```
 // ...create client and initialize
 $address = $client->getManager(AddressManager::class)->GetNewPaymentAddress();
 ```
-- ##### GetAddressBalance
+- ##### GetAddressBalance(string $address) : float
     - Get the balance of the bitcoin address
 ```
 // ... create client and initialize
@@ -77,15 +77,25 @@ $address = $client->getManager(AddressManager::class)->GetNewPaymentAddress();
 // pass false if you want confirmed and unconfirmed transactions included in the balance
 $balance = $client->getManager(AddressManager::class)->GetAddressBalance($address, false);
 ```
-- ##### IsValidAddress
+- ##### IsValidAddress(string $address) : bool
     - Determines if the address is valid or not
-- ##### IsMyAddress
+- ##### IsMyAddress(string $addres) : bool
     - Determines if the address is associated with your wallet or not
-- ##### GetAddressHistory
+- ##### GetAddressHistory(string $address) : array
     - Returns a history of transactions for the adddress
 
 #### Wallet Functions
+##### GetWalletBalance(bool $confirmed = false) : float
 
 #### Transaction Functions
+##### IsFeeAmountValid(float $fee_level) : bool
+##### GetRecommendedTransactionFee(float $level = 0.5) : float
+##### GetTransactionConfirmations(string $transaction) : int
 
 #### Payment Functions
+##### PayTo(string $address, float $amount, float $fee) : string
+##### PayMax(string $address, float $fee) : string
+
+#### Version Functions
+##### GetElectrumVersion() : string
+##### GetVersionInfo(string $versionInfo) : int
