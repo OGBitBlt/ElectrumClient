@@ -61,14 +61,18 @@ try {
 $addressManager = new AddressManager($client);
 $address = $addressManager->GetNewPaymentAddress();
 ```
-### Address Functions
-- ##### GetNewPaymentAddress() : string 
+### Address Functions - AddressManager
+Address functions are available via the AddressManager object :
+```
+$addressManager = $client->getManager(AddressManager::class);
+```
+- ##### AddressManager->GetNewPaymentAddress() : string 
     - Creates a new bitcoin payment address
 ```
 // ...create client and initialize
 $address = $client->getManager(AddressManager::class)->GetNewPaymentAddress();
 ```
-- ##### GetAddressBalance(string $address) : float
+- ##### AdressManager->GetAddressBalance(string $address, bool $confirmed) : float
     - Get the balance of the bitcoin address
 ```
 // ... create client and initialize
@@ -77,17 +81,22 @@ $address = $client->getManager(AddressManager::class)->GetNewPaymentAddress();
 // pass false if you want confirmed and unconfirmed transactions included in the balance
 $balance = $client->getManager(AddressManager::class)->GetAddressBalance($address, false);
 ```
-- ##### IsValidAddress(string $address) : bool
+- ##### AddressManager->IsValidAddress(string $address) : bool
     - Determines if the address is valid or not
-- ##### IsMyAddress(string $addres) : bool
+- ##### AddressManager->IsMyAddress(string $addres) : bool
     - Determines if the address is associated with your wallet or not
-- ##### GetAddressHistory(string $address) : array
+- ##### AddressManager->GetAddressHistory(string $address) : array
     - Returns a history of transactions for the adddress
 
 ### Wallet Functions
-- ##### GetWalletBalance(bool $confirmed = false) : float
+Wallet functions are available via the WalletManager object:
+```
+$walletManager = $client->getManager(WalletManager::class);
+```
+- ##### WalletMaanger->GetWalletBalance(bool $confirmed = false) : float
 
 ### Transaction Functions
+
 - ##### IsFeeAmountValid(float $fee_level) : bool
 - ##### GetRecommendedTransactionFee(float $level = 0.5) : float
 - ##### GetTransactionConfirmations(string $transaction) : int
