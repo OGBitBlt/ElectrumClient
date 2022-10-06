@@ -128,12 +128,20 @@ Transaction functions are available via the TransactionManager object:
 ```
 $transactionManager = $client->getManager(TransactionManager::class);
 ```
-- ##### IsFeeAmountValid(float $fee_level) : bool
-- ##### GetRecommendedTransactionFee(float $level = 0.5) : float
-- ##### GetTransactionConfirmations(string $transaction) : int
+- ##### TransactionManager->IsFeeAmountValid(float $fee_level) : bool
+- ##### TransactionManager->GetRecommendedTransactionFee(float $level = 0.5) : float
+- ##### TransactionManager->GetTransactionConfirmations(string $transaction) : int
 ### Payment Functions
-- ##### PayTo(string $address, float $amount, float $fee) : string
-- ##### PayMax(string $address, float $fee) : string
+Payment functions are available via the PaymentManager object:
+```
+$paymentManager = $client->getManager(PaymentManager::class);
+```
+- ##### PaymentManager->PayTo(string $address, float $amount, float $fee) : string
+- ##### PaymentManager->PayMax(string $address, float $fee) : string
 ### Version Functions
-- ##### GetElectrumVersion() : string
-- ##### GetVersionInfo(string $versionInfo) : int
+Version functions are available via the VersionManager object:
+```
+$versionManager = $client->getManager(VersionManager::class);
+```
+- ##### VersionManager->GetElectrumVersion() : string
+- ##### VersionManager->GetVersionInfo(string $versionInfo) : int
