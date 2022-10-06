@@ -36,7 +36,7 @@ electrum load_wallet --testnet
 There are 2 ways to make calls to the electrum interface. It is always recommended that you use the 
 client object for all of your calls, but in some instances you may want to create your own object managers. Below are examples of both using the Address manager to get a new receive address.
 
-##### Example using the client object (recommended method):
+#### Example using the client object (recommended method):
 ```
 $client = new ElectrumClient('user','pass','localhost',7777,false);
 try {
@@ -48,7 +48,7 @@ try {
 // get a new payment address using the client object manager
 $address = $client->getManager(AddressManager::class)->GetNewPaymentAddress();
 ````
-##### Example by creating the object manager (alternative method):
+#### Example by creating the object manager (alternative method):
 ```
 $client = new ElectrumClient('user','pass','localhost',7777,false);
 try {
@@ -61,7 +61,7 @@ try {
 $addressManager = new AddressManager($client);
 $address = $addressManager->GetNewPaymentAddress();
 ```
-#### Address Functions
+### Address Functions
 - ##### GetNewPaymentAddress() : string 
     - Creates a new bitcoin payment address
 ```
@@ -84,18 +84,18 @@ $balance = $client->getManager(AddressManager::class)->GetAddressBalance($addres
 - ##### GetAddressHistory(string $address) : array
     - Returns a history of transactions for the adddress
 
-#### Wallet Functions
-##### GetWalletBalance(bool $confirmed = false) : float
+### Wallet Functions
+- ##### GetWalletBalance(bool $confirmed = false) : float
 
-#### Transaction Functions
-##### IsFeeAmountValid(float $fee_level) : bool
-##### GetRecommendedTransactionFee(float $level = 0.5) : float
-##### GetTransactionConfirmations(string $transaction) : int
+### Transaction Functions
+- ##### IsFeeAmountValid(float $fee_level) : bool
+- ##### GetRecommendedTransactionFee(float $level = 0.5) : float
+- ##### GetTransactionConfirmations(string $transaction) : int
 
-#### Payment Functions
-##### PayTo(string $address, float $amount, float $fee) : string
-##### PayMax(string $address, float $fee) : string
+### Payment Functions
+- ##### PayTo(string $address, float $amount, float $fee) : string
+- ##### PayMax(string $address, float $fee) : string
 
-#### Version Functions
-##### GetElectrumVersion() : string
-##### GetVersionInfo(string $versionInfo) : int
+### Version Functions
+- ##### GetElectrumVersion() : string
+- ##### GetVersionInfo(string $versionInfo) : int
