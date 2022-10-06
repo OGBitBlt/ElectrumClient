@@ -1,10 +1,11 @@
 # ElectrumClient
 ## Easily accept bitcoin payments using your Electrum wallet
-### No 3rd party libraries required, uses Electrum v4xx 
-This is a fairly simple class library, developed so that all functionality can be accessed from a single object. Completely functional as a standalone library, the original design and architecture of the library is that this will be a specific component of a crypto payment processing platform, still under development as of the time of this writing.
+##### No 3rd party libraries required, uses Electrum v4xx 
+This is a simple class library, developed so that all functionality can be accessed from a single object. Completely functional as a standalone library, the original design and architecture of the library is that this will be a specific component of a crypto payment processing platform, still under development as of the time of this writing.
 
 #### Setting up Electrum 
-Electrum must be configured so that it will run as a daemon and accept JSONRPC calls. 
+Prior to using this library, Electrum must be configured so that it will run as a daemon and accept JSONRPC calls. Electrum will only accept RPC calls on localhost, but this library will allow you to host electrum on another host. When you do this you must setup your firewall on the Electrum host server to forward the requests from this library to localhost and to the port configured for RPC calls within Electrum.
+Below are the steps for setting up Electrum:
 - Download and install Electum from [https://electrum.org/#download](https://electrum.org/#download)
 - Electrum has to be running as a daemon on the system you install it on, the following commands all work on a linux command line. 
 - To start electrum as a daemon enter the command
@@ -61,7 +62,9 @@ try {
 $addressManager = new AddressManager($client);
 $address = $addressManager->GetNewPaymentAddress();
 ```
-### Address Functions - AddressManager
+
+The rest of this document describes the APIs available within the library, I tried to make the documentation as clean as possible but if you find a mistake please email me and let me know <ogbitblt at pm.me>. 
+### Address Functions 
 Address functions are available via the AddressManager object :
 ```
 $addressManager = $client->getManager(AddressManager::class);
@@ -86,25 +89,51 @@ $balance = $client->getManager(AddressManager::class)->GetAddressBalance($addres
 - ##### AddressManager->IsMyAddress(string $addres) : bool
     - Determines if the address is associated with your wallet or not
 - ##### AddressManager->GetAddressHistory(string $address) : array
-    - Returns a history of transactions for the adddress
+    - Returns a history of transactions for the adddress in an associative array that looks like:
+```
+array(3) {
+    [0]=>
+  	array(2) {
+        ["height"]=> 
+	    int(2348296)
+        ["tx_hash"]=>
+        string(64) "ae0722e99cc8c7759c0eff973dabdd247c94edf111259f11babe02aae629f3a8"
+  	}
+	[1]=>
+  	array(2) {
+     	["height"]=>
+     	int(2348296)
+     	["tx_hash"]=>
+     	string(64) "1583791b040ba101e7fbb71c8dd07ecc0b6166e2217d2f5c1f426fb0d40e7077"
+  	}
+  	[2]=>
+  	array(2) {
+    	["height"]=>
+    	int(2348296)
+    	["tx_hash"]=>
+    	string(64) "787a0e4e5bcab07524da9ac60802c163b86fcd297f9649ced6fafbb2005c5adf"
+  	}
+}
+```
 
 ### Wallet Functions
 Wallet functions are available via the WalletManager object:
 ```
 $walletManager = $client->getManager(WalletManager::class);
 ```
-- ##### WalletMaanger->GetWalletBalance(bool $confirmed = false) : float
+- ##### WalletManger->GetWalletBalance(bool $confirmed = false) : float
 
 ### Transaction Functions
-
+Transaction functions are available via the TransactionManager object:
+```
+$transactionManager = $client->getManager(TransactionManager::class);
+```
 - ##### IsFeeAmountValid(float $fee_level) : bool
 - ##### GetRecommendedTransactionFee(float $level = 0.5) : float
 - ##### GetTransactionConfirmations(string $transaction) : int
-
 ### Payment Functions
 - ##### PayTo(string $address, float $amount, float $fee) : string
 - ##### PayMax(string $address, float $fee) : string
-
 ### Version Functions
 - ##### GetElectrumVersion() : string
 - ##### GetVersionInfo(string $versionInfo) : int
