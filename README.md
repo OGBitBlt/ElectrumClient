@@ -92,17 +92,17 @@ $balance = $client->getManager(AddressManager::class)->GetAddressBalance($addres
     - Returns a history of transactions for the adddress in an associative array that looks like:
 ```
 array(3) {
-    [0]=>
+[0]=>
   	array(2) {
         ["height"] => int(2348296)
         ["tx_hash"] => string(64) "ae0722e99cc8c7759c0eff973dabdd247c94edf111259f11babe02aae629f3a8"
   	}
-	[1]=>
+[1]=>
   	array(2) {
         ["height"] => int(2348296)
      	["tx_hash"] => string(64) "1583791b040ba101e7fbb71c8dd07ecc0b6166e2217d2f5c1f426fb0d40e7077"
   	}
-  	[2]=>
+[2]=>
   	array(2) {
     	["height"] => int(2348296)
     	["tx_hash"] => string(64) "787a0e4e5bcab07524da9ac60802c163b86fcd297f9649ced6fafbb2005c5adf"
