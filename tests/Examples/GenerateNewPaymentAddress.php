@@ -5,8 +5,8 @@
 require dirname(__DIR__).'/vendor/autoload.php';
 
 /* --- EDIT THE NEXT 3 LINES WITH YOUR INFO ---  */
-$user = '';     // must be set on the electrum wallet using setconfig rpcuser
-$pw = '';       // must be set on the electrum wallet using setconfig rpcpassword
+$user = 'elrpcusr';     // must be set on the electrum wallet using setconfig rpcuser
+$pw = 'elrpcusr-d3adb33f';       // must be set on the electrum wallet using setconfig rpcpassword
 $port = 7777;   // must be set on the electrum wallet using setconfig rpcport
 /* --- END EDIT SECTION --- */
 

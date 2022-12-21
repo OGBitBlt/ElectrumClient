@@ -20,6 +20,6 @@ exec('electrum stop --testnet',$output, $retval);
 fwrite(STDOUT, "BOOTSTRAP: shutting down electrum\n\t" . implode("=",$output) ."\n");
 
 exec('electrum daemon -d --testnet; electrum load_wallet --testnet',$output, $retval);
-fwrite(STDOUT, "BOOTSTRAP: restarted electru and loaded wallet\n\t" . implode("=",$output)."\n");
+fwrite(STDOUT, "BOOTSTRAP: restarted electrum and loaded wallet\n\t" . implode("=",$output)."\n");
 
 ?>

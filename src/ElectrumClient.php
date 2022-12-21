@@ -9,8 +9,6 @@
  *  
  * @package OGBitBlt\Electrum
  * @author Anthony Davis <anthonyjohndavis@outlook.com>
- * @version $Id$ 
- * @access public  
  * 
  * See the README for instructions on how to setup Electrum to run as a daemon
  * and expose the JSON RPC interface that this library will call.
